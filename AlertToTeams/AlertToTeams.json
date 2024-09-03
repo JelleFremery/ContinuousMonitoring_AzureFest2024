@@ -1,0 +1,38 @@
+{
+    "type": "message",
+    "attachments": [
+        {
+            "contentType": "application/vnd.microsoft.card.adaptive",
+            "content": {
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "type": "AdaptiveCard",
+                "version": "1.0",
+                "msteams": {
+                    "width": "Full"
+                },
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Alert!!!",
+                        "id": "Title",
+                        "spacing": "Medium",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "color": "Accent"
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "Something terrible happened.",
+                        "id": "Message",
+                        "separator": true
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "Lorem ipsum...",
+                        "id": "Message2"
+                    }
+                ]
+            }
+        }
+    ]
+}
