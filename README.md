@@ -49,6 +49,25 @@ After this session, you will have plenty of inspiration and examples of using mo
 
 ![overview](Overview.drawio.png)
 
+| Resource | Purpose |
+| --- | --- |
+| [Betabit-AzureFest](https://portal.azure.com/?feature.tokencaching=true&feature.internalgraphapiversion=true#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/overview) | Resource group where allmost all related resoruces are grouped. |
+| [Betabit-AzureFest-loganalytics](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.OperationalInsights/workspaces/Betabit-AzureFest-loganalytics) | Log analytics workspace |
+| [Betabit-AzureFest-ai](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/components/Betabit-AzureFest-ai) | App insights to collect logs from the container apps. |
+| [BetabitAzureFestAcr](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.ContainerRegistry/registries/BetabitAzureFestAcr) | Azure Container Registry |
+| [SecurityInsights(betabit-azurefest-loganalytics)](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/betabit-azurefest/providers/Microsoft.OperationsManagement/solutions/SecurityInsights(betabit-azurefest-loganalytics)) | Microsoft.OperationsManagement/solutions |
+| [Betabit-AzureFest-cae](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/managedEnvironments/Betabit-AzureFest-cae) | Container application environment. Hosts the container apps. |
+| [Betabit-AzureFest-mi](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/Betabit-AzureFest-mi) | User assigned Identity, for instance used to allow the container app to pull from the ACR. |
+| [cache](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/containerApps/cache) | Azure container app with Redis cache to cache the weather requests. |
+| [apiservice](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/containerApps/apiservice) | Azure container app with API to provide (generated) weather information. |
+| [webfrontend](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/containerApps/webfrontend) | Azure container app with Blazor web app to provide weather information. |
+| [allerttoteams](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/containerApps/allerttoteams) | Azure container app with Azure function to translate the common alert message to a dynamic message for Teams and send it to teams. |
+| [Betabit-AzureFest-ToTeams](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/actiongroups/Betabit-AzureFest-ToTeams) | Action group to send alerts to Teams. Also sends alerts to Request Inspector to be able to inspect the messages. |
+| [Betabit-AzureFest-ToMail](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/actiongroups/Betabit-AzureFest-ToMail) | Action group to send alerts to e-mail. |
+| [Betabit-Azurefest-Weather](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/scheduledqueryrules/Betabit-Azurefest-Weather) | Alert that, one every 5 minutes, checks there have not been more than 20 requests to the app in that time span. Alert uses the two action groups to send the alert to the right places. |
+| [Monitor](https://portal.azure.com/#view/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/) | Azure monitor instances. |
+| [Betabit-AzureFest-loganalytics](https://portal.azure.com/#view/Microsoft_Azure_Security_Insights/MainMenuBlade/~/0/id/%2Fsubscriptions%2F0c714ab2-4eb7-414f-8b6d-9acf76aa80ca%2Fresourcegroups%2Fbetabit-azurefest%2Fproviders%2Fmicrosoft.securityinsightsarg%2Fsentinel%2Fbetabit-azurefest-loganalytics) | Azure Sentinel instance. |
+
 ### Containerized application in Azure
 
 - [.NET Aspire](https://learn.microsoft.com/en-us/dotnet/aspire/)
@@ -66,17 +85,9 @@ After this session, you will have plenty of inspiration and examples of using mo
 - [Betatalks #95 - .NET Essentials: Logging in .NET (Part 1)](https://www.betabit.nl/betatalks-videos/betatalks-95-net-essentials-logging-in-net-part-1)
 - [Betatalks #96 - .NET Essentials: Logging in .NET (Part 2)](https://www.betabit.nl/betatalks-videos/betatalks-96-net-essentials-logging-in-net-part-2)
 
-## Azure resources
-
-- Resource group: [Betabit-AzureFest](https://portal.azure.com/?feature.tokencaching=true&feature.internalgraphapiversion=true#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/overview)  
-- [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview): [Monitor](https://portal.azure.com/#view/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/)
-- [Azure Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/overview?tabs=azure-portal): [Betabit-AzureFest-loganalytics](https://portal.azure.com/#view/Microsoft_Azure_Security_Insights/MainMenuBlade/~/0/id/%2Fsubscriptions%2F0c714ab2-4eb7-414f-8b6d-9acf76aa80ca%2Fresourcegroups%2Fbetabit-azurefest%2Fproviders%2Fmicrosoft.securityinsightsarg%2Fsentinel%2Fbetabit-azurefest-loganalytics)
-- Application Insights: [Betabit-AzureFest-ai](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/components/Betabit-AzureFest-ai/overview)
-- Container Registry: [BetabitAzureFestAcr](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourcegroups/Betabit-AzureFest/providers/Microsoft.ContainerRegistry/registries/BetabitAzureFestAcr/overview) - Admin user enabled
-
 ## Demo project
 
-THe example is taken from  [Deploy apps to Azure Container Apps easily with .NET Aspire](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/deploy-apps-to-azure-container-apps-easily-with-net-aspire/ba-p/4032711) to create an Aspire app. The project is added to the `DemoApp` folder of this solution.
+The example is taken from  [Deploy apps to Azure Container Apps easily with .NET Aspire](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/deploy-apps-to-azure-container-apps-easily-with-net-aspire/ba-p/4032711) to create an Aspire app. The project is added to the `DemoApp` folder of this solution.
 
 Install:
 
