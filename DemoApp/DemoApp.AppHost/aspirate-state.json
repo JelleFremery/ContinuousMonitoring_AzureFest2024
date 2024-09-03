@@ -2,7 +2,16 @@
   "projectPath": ".",
   "inputPath": "aspirate-output",
   "containerRegistry": "betabitazurefestacr.azurecr.io",
+  "containerImageTags": [
+    "latest",
+    "20240903-135456"
+  ],
   "containerBuilder": "docker",
   "outputFormat": "docker",
+  "secrets": {
+    "salt": "UDIQ5bnRB2tsCgEQ",
+    "hash": "5Pttj9LrbzCweP1/MZoS1aFHo\u002BwQDj2d7\u002Brt0TJLI18=",
+    "secrets": {}
+  },
   "processAllComponents": true
 }

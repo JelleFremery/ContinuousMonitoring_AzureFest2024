@@ -76,31 +76,12 @@ After this session, you will have plenty of inspiration and examples of using mo
 
 ## Demo project
 
-THe example is taken freom  [Deploy apps to Azure Container Apps easily with .NET Aspire](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/deploy-apps-to-azure-container-apps-easily-with-net-aspire/ba-p/4032711) to create an Aspire app. The project is added to the `DemoApp` folder of this solution.
+THe example is taken from  [Deploy apps to Azure Container Apps easily with .NET Aspire](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/deploy-apps-to-azure-container-apps-easily-with-net-aspire/ba-p/4032711) to create an Aspire app. The project is added to the `DemoApp` folder of this solution.
 
-Install [Aspir8](https://github.com/prom3theu5/aspirational-manifests).
-Deploy containers to ACR using powershell in `DemoApp.AppHost` folder:
+Install:
 
-```pwsh
-az acr login --name betabitazurefestacr
+- [Aspire](https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/setup-tooling)
+- [Aspir8](https://github.com/prom3theu5/aspirational-manifests)
+- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/)
 
-$version = get-date -f  
-
-# Create the DemoApp images.
-aspirate build --container-registry betabitazurefestacr.azurecr.io --non-interactive --project-path . --container-image-tag latest --container-image-tag $version
-# Run the images.
-az containerapp update --name apiservice --resource-group Betabit-AzureFest --image betabitazurefestacr.azurecr.io/apiservice:$version
-az containerapp update --name webfrontend --resource-group Betabit-AzureFest --image betabitazurefestacr.azurecr.io/webfrontend:$version
-```
-
-Now go to the container apps and restart them(?).
-
-To build and deploy the function to send alert messages to teams, got into the folder where the `AlertToTeams` solution is located.
-
-```pwsh
-$version = 5
-# Create the image.
-az acr build --registry betabitazurefestacr --image alerttoteams:$version --file .\AlertToTeams\Dockerfile .
-# Run the image.
-az containerapp update --name alerttoteams --resource-group Betabit-AzureFest --image betabitazurefestacr.azurecr.io/alerttoteams:$version
-```
+To build the docker images, store them in AzUre Container Registry and deploy them as Azure Container apps, run the `DeployTo-Azure.ps1` script in the root of this repository.
