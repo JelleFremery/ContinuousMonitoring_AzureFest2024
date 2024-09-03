@@ -20,7 +20,10 @@ try
   az acr login --name $AzureContainerRegistryName
 
   # Create the DemoApp images.
-  aspirate build --container-registry "${AzureContainerRegistryName}.azurecr.io" --non-interactive --project-path . --container-image-tag latest --container-image-tag $version
+  aspirate build --disable-secrets --disable-state --container-registry "${AzureContainerRegistryName}.azurecr.io" `
+        --non-interactive --project-path . --container-image-tag latest --container-image-tag $version `
+        --container-builder docker
+
   # Run the images.
   az containerapp update --name apiservice --resource-group $ResourceGroupName --image "${AzureContainerRegistryName}.azurecr.io/apiservice:${version} "
   az containerapp update --name webfrontend --resource-group $ResourceGroupName --image "${AzureContainerRegistryName}.azurecr.io/webfrontend:${version}"
