@@ -1,0 +1,15 @@
+{
+  "projectPath": ".",
+  "containerRegistry": "betabitazurefestacr.azurecr.io",
+  "containerImageTags": [
+    "latest",
+    "5"
+  ],
+  "containerBuilder": "docker",
+  "outputFormat": "kustomize",
+  "secrets": {
+    "salt": "IVzyUqxiuJ1DHOfZ",
+    "hash": "Jz9MsYOAu3XmpK4J2HdoGVXGoO0/hImZA1cchECwNdo=",
+    "secrets": {}
+  }
+}

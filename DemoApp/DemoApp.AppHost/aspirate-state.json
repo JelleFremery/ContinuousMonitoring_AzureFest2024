@@ -1,0 +1,8 @@
+{
+  "projectPath": ".",
+  "inputPath": "aspirate-output",
+  "containerRegistry": "betabitazurefestacr.azurecr.io",
+  "containerBuilder": "docker",
+  "outputFormat": "docker",
+  "processAllComponents": true
+}
