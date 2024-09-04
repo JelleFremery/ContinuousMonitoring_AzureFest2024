@@ -37,8 +37,7 @@ namespace AlertToTeams
                     $"Too many temperature exceptions: **{count}** times in {time}.", 
                     investigationLink);
                 _logger.LogError(
-                    "Too many temperature exceptions: {count} times in {time}.", count,
-                    time, threshold);
+                    "Too many temperature exceptions: {count} times in {time}.", count, time);
             }
             else
             {
