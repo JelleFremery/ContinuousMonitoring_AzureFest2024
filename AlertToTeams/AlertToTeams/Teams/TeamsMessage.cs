@@ -4,10 +4,20 @@ using System.Text.Json.Serialization;
 
 public class TeamsMessage
 {
-    public TeamsMessage(string content)
+    public TeamsMessage(string title, string content, string investigationLink)
     {
+        attachments[0].content.body[0].text = title;
         attachments[0].content.body[1].text = content;
         attachments[0].content.body[2].text = $"Sent from `Azure Function` at **{DateTime.Now}**.";
+
+        if (!string.IsNullOrEmpty(investigationLink))
+        {
+            attachments[0].content.actions.Add(new ButtonAction
+            {
+                title = "View in App Insights",
+                url = investigationLink
+            });
+        }
     }
 
     public string type { get; set; } = "message";
@@ -36,7 +46,6 @@ public class Content
     public TextBlock[] body { get; set; } = [
         new TextBlock
         {
-            text = "Page visit count Alert",
             color = "Accent",
             size = "ExtraLarge"
         },
@@ -45,6 +54,15 @@ public class Content
             separator = true
         },
         new TextBlock()
+    ];
+
+    public IList<ButtonAction> actions { get; set; } =
+    [
+        new ButtonAction
+        {
+            title = "Powered by Betabit",
+            url = "https://www.betabit.nl"
+        }
     ];
 }
 
@@ -68,4 +86,13 @@ public class TextBlock : BodyElement
     public string weight { get; set; }
     public string color { get; set; }
     public bool separator { get; set; }
+    public bool wrap { get; set; } = true;
+}
+
+public class ButtonAction
+{
+    public string role { get; set; } = "button";
+    public string title { get; set; } = "Powered by Betabit";
+    public string type { get; set; } = "Action.OpenUrl";
+    public string url { get; set; } = "https://www.betabit.nl";
 }

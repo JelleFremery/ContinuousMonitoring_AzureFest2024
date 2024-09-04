@@ -21,6 +21,27 @@ public class WeatherApiClient(HttpClient httpClient)
 
         return forecasts?.ToArray() ?? [];
     }
+
+    public async Task<WeatherForecast[]> GetBadWeatherAsync(int maxItems = 10, CancellationToken cancellationToken = default)
+    {
+        List<WeatherForecast>? forecasts = null;
+
+        await foreach (var forecast in httpClient.GetFromJsonAsAsyncEnumerable<WeatherForecast>("/bad-weatherforecast", cancellationToken))
+        {
+            if (forecasts?.Count >= maxItems)
+            {
+                break;
+            }
+            if (forecast is not null)
+            {
+                forecasts ??= [];
+                forecasts.Add(forecast);
+            }
+        }
+
+        return forecasts?.ToArray() ?? [];
+    }
+
 }
 
 public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

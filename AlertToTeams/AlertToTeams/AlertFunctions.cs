@@ -5,6 +5,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
 using System.Text.Json;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AlertToTeams
 {
@@ -28,9 +29,27 @@ namespace AlertToTeams
             var count = alert.data.alertContext.condition.allOf[0].metricValue;
             var time = alert.data.alertContext.condition.windowEndTime - alert.data.alertContext.condition.windowStartTime;
             var threshold = alert.data.alertContext.condition.allOf[0].threshold;
-            var teamsBody = new TeamsMessage($"Page was visited **{count}** times in {time}, which is more than the expected **{threshold}**.");
+            var investigationLink = alert.data.alertContext.condition.allOf[0].linkToFilteredSearchResultsUI;
+            TeamsMessage teamsBody;
+            if (alert.data.essentials.alertRule == "Betabit-AzureFest-Exceptions")
+            {
+                teamsBody = new TeamsMessage("Too many temperature exceptions", 
+                    $"Too many temperature exceptions: **{count}** times in {time}.", 
+                    investigationLink);
+                _logger.LogError(
+                    "Too many temperature exceptions: {count} times in {time}.", count,
+                    time, threshold);
+            }
+            else
+            {
+                teamsBody = new TeamsMessage("Page visit count Alert", 
+                    $"Page was visited **{count}** times in {time}, which is more than the expected **{threshold}**.", 
+                    investigationLink);
+                _logger.LogWarning(
+                    "Page was visited {count} times in {time}, which is more than the expected {threshold}.", count,
+                    time, threshold);
+            }
 
-            _logger.LogWarning("Page was visited {count} times in {time}, which is more than the expected {threshold}.", count, time, threshold);
             var client = new HttpClient
             {
                 BaseAddress = _settings.WebhookUri
