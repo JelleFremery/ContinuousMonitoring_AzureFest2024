@@ -1,11 +1,11 @@
+using System.Net.Http.Headers;
 using AlertToTeams.Alert;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
-using System.Net.Http.Json;
 using System.Text.Json;
-using static System.Net.Mime.MediaTypeNames;
+using AlertToTeams.Teams;
 
 namespace AlertToTeams
 {
@@ -29,13 +29,14 @@ namespace AlertToTeams
             var count = alert.data.alertContext.condition.allOf[0].metricValue;
             var time = alert.data.alertContext.condition.windowEndTime - alert.data.alertContext.condition.windowStartTime;
             var threshold = alert.data.alertContext.condition.allOf[0].threshold;
-            var investigationLink = alert.data.alertContext.condition.allOf[0].linkToFilteredSearchResultsUI;
+            var linkToFilteredSearchResultsUi = alert.data.alertContext.condition.allOf[0].linkToFilteredSearchResultsUI;
+            var severity = alert.data.essentials.severity;
             TeamsMessage teamsBody;
             if (alert.data.essentials.alertRule == "Betabit-AzureFest-Exceptions")
             {
                 teamsBody = new TeamsMessage("Too many temperature exceptions", 
                     $"Too many temperature exceptions: **{count}** times in {time}.", 
-                    investigationLink);
+                    linkToFilteredSearchResultsUi, severity);
                 _logger.LogError(
                     "Too many temperature exceptions: {count} times in {time}.", count, time);
             }
@@ -43,7 +44,7 @@ namespace AlertToTeams
             {
                 teamsBody = new TeamsMessage("Page visit count Alert", 
                     $"Page was visited **{count}** times in {time}, which is more than the expected **{threshold}**.", 
-                    investigationLink);
+                    linkToFilteredSearchResultsUi, severity);
                 _logger.LogWarning(
                     "Page was visited {count} times in {time}, which is more than the expected {threshold}.", count,
                     time, threshold);
@@ -53,7 +54,11 @@ namespace AlertToTeams
             {
                 BaseAddress = _settings.WebhookUri
             };
-            var result = await client.PostAsJsonAsync(_settings.WebhookUri, teamsBody).ConfigureAwait(false);
+            var json = teamsBody.ToJson();
+            var buffer = System.Text.Encoding.UTF8.GetBytes(json);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var result = await client.PostAsync(_settings.WebhookUri, byteContent).ConfigureAwait(false);
 
             if (result.IsSuccessStatusCode)
             {
