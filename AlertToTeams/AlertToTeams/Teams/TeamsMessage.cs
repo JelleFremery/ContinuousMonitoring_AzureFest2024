@@ -33,13 +33,13 @@ public class TeamsMessage
         });
         _card.Body.Add(new AdaptiveTextBlock(content)
         {
+            Separator = true,
             Wrap = true
         });
         _card.Body.Add(new AdaptiveTextBlock($"Sent from `Azure Function` at **{DateTime.UtcNow}** (UTC).")
         {
             Size = AdaptiveTextSize.Small,
             Wrap = true
-            
         });
 
         _card.Actions.Add(new AdaptiveOpenUrlAction
