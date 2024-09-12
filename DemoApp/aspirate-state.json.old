@@ -1,6 +1,6 @@
 {
   "projectPath": ".",
-  "containerRegistry": "betabitazurefestacr.azurecr.io",
+  "containerRegistry": "INSERTREGISTRYHERE",
   "containerImageTags": [
     "latest",
     "5"

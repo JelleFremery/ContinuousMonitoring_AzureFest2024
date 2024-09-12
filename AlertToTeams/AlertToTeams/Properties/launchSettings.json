@@ -8,7 +8,7 @@
       "commandName": "Docker",
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
-        "Teams__WebhookUri": "https://betabitextranet.webhook.office.com/webhookb2/27151378-cfbb-41a6-8c6b-bdc9417fee15@bd82c850-31e3-468e-a170-886174a9e22d/IncomingWebhook/7a318be6c8b74a3c8a1bcb596a899004/743f138e-f812-46ec-a4ea-86fcd34b1619"
+        "Teams__WebhookUri": "INSERTWEBHOOKURLHERE"
       },
       "DockerfileRunArguments": "--init",
       "httpPort": 30153,

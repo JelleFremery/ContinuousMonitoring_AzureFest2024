@@ -2,24 +2,21 @@
     "schemaId": "azureMonitorCommonAlertSchema",
     "data": {
         "essentials": {
-            "alertId": "/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/providers/Microsoft.AlertsManagement/alerts/ce4c04db-401f-6706-c729-f5eef7e2000e",
-            "alertRule": "Betabit-Azurefest-Weather",
-            "severity": "Sev2",
-            "signalType": "Log",
-            "monitorCondition": "Fired",
+            "alertId": "INSERTALERTIDHERE",
+            "alertRule": "INSERTALERTRULEHERE",
             "monitoringService": "Log Alerts V2",
             "alertTargetIDs": [
-                "/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourcegroups/betabit-azurefest/providers/microsoft.insights/components/betabit-azurefest-ai"
+                "INSERTAIIDHERE"
             ],
             "configurationItems": [
-                "/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/components/Betabit-AzureFest-ai"
+                "INSERTAIIDHERE"
             ],
             "originAlertId": "338cbb18-a56a-4e32-b2a7-8bdbf655b099",
             "firedDateTime": "2024-08-20T15:13:56.5801333Z",
-            "description": "To many requests to weather page",
+            "description": "Too many requests to weather page",
             "essentialsVersion": "1.0",
             "alertContextVersion": "1.0",
-            "investigationLink": "https://portal.azure.com/#view/Microsoft_Azure_Monitoring_Alerts/Investigation.ReactView/alertId/%2fsubscriptions%2f0c714ab2-4eb7-414f-8b6d-9acf76aa80ca%2fresourceGroups%2fbetabit-azurefest%2fproviders%2fMicrosoft.AlertsManagement%2falerts%2fce4c04db-401f-6706-c729-f5eef7e2000e"
+            "investigationLink": "INSERT RELEVANT LINK HERE"
         },
         "alertContext": {
             "properties": {},
@@ -27,25 +24,25 @@
             "condition": {
                 "windowSize": "PT5M",
                 "allOf": [
-                    {
-                        "searchQuery": "requests\n| where name == 'GET /weather'\n",
-                        "metricMeasureColumn": null,
-                        "targetResourceTypes": "['microsoft.insights/components']",
-                        "operator": "GreaterThan",
-                        "threshold": "20",
-                        "timeAggregation": "Count",
-                        "dimensions": [],
-                        "metricValue": 164.0,
-                        "failingPeriods": {
-                            "numberOfEvaluationPeriods": 1,
-                            "minFailingPeriodsToAlert": 1
-                        },
-                        "linkToSearchResultsUI": "https://portal.azure.com#@bd82c850-31e3-468e-a170-886174a9e22d/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%2F0c714ab2-4eb7-414f-8b6d-9acf76aa80ca%2FresourceGroups%2FBetabit-AzureFest%2Fproviders%2Fmicrosoft.insights%2Fcomponents%2FBetabit-AzureFest-ai%22%7D%5D%7D/q/eJwrSi0sTS0uKeaqUSjPSC1KVchLzE1VsLVVUHd3DVHQL09NLAEKqwMA/prettify/1/timespan/2024-08-20T15%3a05%3a55.0000000Z%2f2024-08-20T15%3a10%3a55.0000000Z",
-                        "linkToFilteredSearchResultsUI": "https://portal.azure.com#@bd82c850-31e3-468e-a170-886174a9e22d/blade/Microsoft_Azure_Monitoring_Logs/LogsBlade/source/Alerts.EmailLinks/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%2F0c714ab2-4eb7-414f-8b6d-9acf76aa80ca%2FresourceGroups%2FBetabit-AzureFest%2Fproviders%2Fmicrosoft.insights%2Fcomponents%2FBetabit-AzureFest-ai%22%7D%5D%7D/q/eJwrSi0sTS0uKeaqUSjPSC1KVchLzE1VsLVVUHd3DVHQL09NLAEKqwMA/prettify/1/timespan/2024-08-20T15%3a05%3a55.0000000Z%2f2024-08-20T15%3a10%3a55.0000000Z",
-                        "linkToSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/de861811-65a4-4421-a8b4-ea3e29244c25/query?query=requests%0A%7C%20where%20name%20%3D%3D%20%27GET%20%2Fweather%27&timespan=2024-08-20T15%3a05%3a55.0000000Z%2f2024-08-20T15%3a10%3a55.0000000Z",
-                        "linkToFilteredSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/de861811-65a4-4421-a8b4-ea3e29244c25/query?query=requests%0A%7C%20where%20name%20%3D%3D%20%27GET%20%2Fweather%27&timespan=2024-08-20T15%3a05%3a55.0000000Z%2f2024-08-20T15%3a10%3a55.0000000Z",
-                        "event": null
-                    }
+                  {
+                    "searchQuery": "requests\n| where name == 'GET /weather'\n",
+                    "metricMeasureColumn": null,
+                    "targetResourceTypes": "['microsoft.insights/components']",
+                    "operator": "GreaterThan",
+                    "threshold": "20",
+                    "timeAggregation": "Count",
+                    "dimensions": [],
+                    "metricValue": 164.0,
+                    "failingPeriods": {
+                      "numberOfEvaluationPeriods": 1,
+                      "minFailingPeriodsToAlert": 1
+                    },
+                    "linkToSearchResultsUI": "INSERTURLHERE",
+                    "linkToFilteredSearchResultsUI": "INSERTURLHERE",
+                    "linkToSearchResultsAPI": "INSERTURLHERE",
+                    "linkToFilteredSearchResultsAPI": "INSERTURLHERE",
+                    "event": null
+                  }
                 ],
                 "windowStartTime": "2024-08-20T15:05:55Z",
                 "windowEndTime": "2024-08-20T15:10:55Z"

@@ -2,11 +2,11 @@
 param (
   [Parameter()]
   [Alias('RGN')]
-  [string] $ResourceGroupName = 'Betabit-AzureFest',
+  [string] $ResourceGroupName = 'INSERTRGHERE',
 
   [Parameter()]
   [Alias('ACRN')]
-  [string] $AzureContainerRegistryName = 'betabitazurefestacr'
+  [string] $AzureContainerRegistryName = 'INSERTREGISTRYHERE'
 )
 
 $version = Get-Date -Format 'yyyyMMdd-HHmmss'
