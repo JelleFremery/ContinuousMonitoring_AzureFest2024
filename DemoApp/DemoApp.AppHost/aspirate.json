@@ -1,7 +1,7 @@
 {
   "TemplatePath": null,
   "ContainerSettings": {
-    "Registry": " betabitazurefestacr.azurecr.io",
+    "Registry": "INSERTREGISTRYHERE",
     "RepositoryPrefix": null,
     "Tags": [
       "latest"

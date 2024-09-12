@@ -1,6 +1,7 @@
 # AzureFest2024
 
-11 September 2024.
+Achieving Continuous Monitoring - Jelle Fremery - 11 September 2024
+With great help from esteemed colleague Daniel te Winkel.
 
 ## Syllabus
 
@@ -22,52 +23,41 @@ After this session, you will have plenty of inspiration and examples of using mo
 ## Core elements
 
 - Generate and store monitoring and analytics data
-  - App insights (Client? and Server side)
+  - App insights
   - Log Analytics workspace
-  - Azure monitor? -> **koppeling Azure DevOps work items** MS Learn.
-  - Azure Sentinel?
+  - Azure Monitor
+  - Azure Sentinel
   - Auditing on all resources.
-- Turn that data into actionable information
-- Act on that information by setting up a durable integration with Azure DevOps
-- Containerized Application in Azure
-  - Welke functionaliteit om redelijke data te krijgen?
-    - Login?
-    - Data(base) access?
-    - [.NET eShop](https://github.com/dotnet/eShop)?
+- Turn log data into actionable information via Continuous Monitoring
+- Act on that information in a structured manner by setting up a durable integration with Azure DevOps
+- Containerized Application in Azure 
 - [7 Cs of DevOps](https://www.geeksforgeeks.org/devops-lifecycle/)
-- Continuous Monitoring
-- Azure Monitor
-  - Nog nooit ingericht...
-- Azure Sentinel + Azure Monitor.
-  - Global resources. Hulp nodig om aan te maken.
-- Action Groups and Functions create and update items on an Azure DevOps
-  - Voorbeeld Function beschikbaar?
-- KQL for custom queries (event count voorbeeld)
-- Dashboards in Power BI in Azure DevOps
+- Action Groups and Functions to create and update items on an Azure DevOps
+- KQL for custom queries
+- Option to set up dashboards in Power BI to display in Azure DevOps
 - Integrating with Microsoft Outlook and Microsoft Teams
-  - Default / custom (vooral teams)
+  - Default / custom (especially teams)
 
 ![overview](Overview.drawio.png)
 
+### Resources used during talk
 | Resource | Purpose |
 | --- | --- |
-| [Betabit-AzureFest](https://portal.azure.com/?feature.tokencaching=true&feature.internalgraphapiversion=true#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/overview) | Resource group where allmost all related resoruces are grouped. |
-| [Betabit-AzureFest-loganalytics](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.OperationalInsights/workspaces/Betabit-AzureFest-loganalytics) | Log analytics workspace |
-| [Betabit-AzureFest-ai](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/components/Betabit-AzureFest-ai) | App insights to collect logs from the container apps. |
-| [BetabitAzureFestAcr](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.ContainerRegistry/registries/BetabitAzureFestAcr) | Azure Container Registry |
-| [SecurityInsights(betabit-azurefest-loganalytics)](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/betabit-azurefest/providers/Microsoft.OperationsManagement/solutions/SecurityInsights(betabit-azurefest-loganalytics)) | Microsoft.OperationsManagement/solutions |
-| [Betabit-AzureFest-cae](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/managedEnvironments/Betabit-AzureFest-cae) | Container application environment. Hosts the container apps. |
-| [Betabit-AzureFest-mi](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/Betabit-AzureFest-mi) | User assigned Identity, for instance used to allow the container app to pull from the ACR. |
-| [cache](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/containerApps/cache) | Azure container app with Redis cache to cache the requests to the weather API. |
-| [apiservice](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/containerApps/apiservice) | Azure container app with API to provide (generated) weather information. |
-| [webfrontend](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/containerApps/webfrontend) | Azure container app with Blazor web app to provide weather information. |
-| [allerttoteams](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/Microsoft.App/containerApps/allerttoteams) | Azure container app with Azure function to translate the common alert message to a dynamic message for Teams and send it to teams. Changes the message depending on the incoming alert type. Adds buttons to the message to make it actionable. |
-| [Betabit-AzureFest-ToTeams](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/actiongroups/Betabit-AzureFest-ToTeams) | Action group to send alerts to Teams. Also sends alerts to Request Inspector to be able to inspect the messages. |
-| [Betabit-AzureFest-ToMail](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/actiongroups/Betabit-AzureFest-ToMail) | Action group to send alerts to e-mail. |
-| [Betabit-Azurefest-Weather](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/scheduledqueryrules/Betabit-Azurefest-Weather) | Alert that, once every 5 minutes, checks there have not been more than 20 requests to the app in that time span. Alert uses the two action groups to send the alert to the right places. |
-| [Betabit-Azurefest-Exceptions](https://portal.azure.com/#@betabitextranet.onmicrosoft.com/resource/subscriptions/0c714ab2-4eb7-414f-8b6d-9acf76aa80ca/resourceGroups/Betabit-AzureFest/providers/microsoft.insights/scheduledqueryrules/Betabit-Azurefest-Exceptions) | Alert that, once every minute, checks there have not been any 'too cold' exceptions in the API in that time span. Alert uses the two action groups to send the alert to the right places. |
-| [Monitor](https://portal.azure.com/#view/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/) | Azure monitor instances. |
-| [Betabit-AzureFest-loganalytics](https://portal.azure.com/#view/Microsoft_Azure_Security_Insights/MainMenuBlade/~/0/id/%2Fsubscriptions%2F0c714ab2-4eb7-414f-8b6d-9acf76aa80ca%2Fresourcegroups%2Fbetabit-azurefest%2Fproviders%2Fmicrosoft.securityinsightsarg%2Fsentinel%2Fbetabit-azurefest-loganalytics) | Azure Sentinel instance. |
+| Resource Group | Logical container to group (almost) all revant resoruces. |
+| Log Analytics workspace | Gather App Insights |
+| App Insights | Collect logs from the container apps. |
+| Azure Container Registry | Register apps |
+| Security Insights | Microsoft.OperationsManagement/solutions |
+| Container application environment. | Hosts the container apps. |
+| User assigned Identity | For instance, used to allow the container app to pull from the ACR. |
+| Cache (Azure container app with Redis cache) | To cache the requests to the Weather API. |
+| ApiService (Azure container app with API) | To provide (generated) weather information. |
+| WebFrontend (Azure container app with Blazor web app) | Display weather information. |
+| AlertToTeams (Azure container app with Azure function) | Translates the common alert message to a dynamic message for Teams and send it to teams. Changes the message depending on the incoming alert type. Adds buttons to the message to make it actionable. |
+| Action Group (ToTeams) | Action group to send alerts to Teams. Also sends alerts to Request Inspector to be able to inspect the messages. |
+| ActionGroup (ToMail) | Action group to send alerts to e-mail. |
+| Weather Alert  | Alert that, once every 5 minutes, checks there have not been more than 20 requests to the app in that time span. Alert uses the two action groups to send the alert to the right places. |
+| Exceptions Alert | Alert that, once every minute, checks there have not been any 'too cold' exceptions in the API in that time span. Alert uses the two action groups to send the alert to the right places. |
 
 ### Containerized application in Azure
 
@@ -96,4 +86,4 @@ Install:
 - [Aspir8](https://github.com/prom3theu5/aspirational-manifests)
 - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/)
 
-To build the docker images, store them in AzUre Container Registry and deploy them as Azure Container apps, run the `DeployTo-Azure.ps1` script in the root of this repository.
+To build the docker images, fill out missing config, store images in Azure Container Registry and deploy them as Azure Container apps, run the `DeployTo-Azure.ps1` script in the root of this repository.

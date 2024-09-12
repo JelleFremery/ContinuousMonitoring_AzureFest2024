@@ -39,7 +39,7 @@ app.MapGet("/bad-weatherforecast", () =>
                 summaries[Random.Shared.Next(summaries.Length)]
             ))
         .ToArray();
-    if (forecast.Any(x => x.Summary == summaries[0]))
+    if (Array.Exists(forecast, x => x.Summary == summaries[0]))
     {
         throw new ApplicationException("Ouch... This is too cold...");
     }
@@ -49,8 +49,3 @@ app.MapGet("/bad-weatherforecast", () =>
 app.MapDefaultEndpoints();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
